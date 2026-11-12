@@ -240,68 +240,69 @@ const DAYS=["sun","mon","tue","wed","thu","fri","sat"];
 const DAYNAME={mon:"Mon",tue:"Tue",wed:"Wed",thu:"Thu",fri:"Fri",sat:"Sat",sun:"Sun"};
 const PLAN={
   mon:{label:"Upper",focus:"Strength",cool:"upper",ex:[
-    {id:"smith-bench",n:"Smith machine bench press",s:4,lo:4,hi:6,r:180,rir:"1–2",inc:2.5},
-    {id:"pulldown-wide",n:"Lat pulldown (wide grip, heavy)",s:4,lo:5,hi:8,r:180,rir:"1–2",inc:2.5},
-    {id:"ohp",n:"Barbell overhead press",s:3,lo:5,hi:8,r:150,rir:"1–2",inc:2.5},
-    {id:"cable-row",n:"Seated cable row",s:3,lo:6,hi:8,r:120,rir:"1",inc:2.5},
-    {id:"bb-curl",n:"Barbell curl",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:2.5},
+    {id:"smith-bench",n:"Smith machine bench press",s:4,lo:4,hi:6,r:180,rir:"1–2",inc:5},
+    {id:"pulldown-wide",n:"Lat pulldown (wide grip, heavy)",s:4,lo:5,hi:8,r:180,rir:"1–2",inc:5},
+    {id:"ohp",n:"Barbell overhead press",s:3,lo:5,hi:8,r:150,rir:"1–2",inc:5},
+    {id:"cable-row",n:"Seated cable row",s:3,lo:6,hi:8,r:120,rir:"1",inc:5},
+    {id:"bb-curl",n:"Barbell curl",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:5},
     {id:"oh-tri",n:"Overhead cable triceps extension",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:0}]},
   tue:{label:"Lower",focus:"Strength",cool:"lower",ex:[
-    {id:"smith-squat",n:"Smith machine squat",s:4,lo:5,hi:8,r:180,rir:"1–2",inc:5},
-    {id:"rdl",n:"Barbell Romanian deadlift",s:3,lo:6,hi:8,r:180,rir:"1–2",inc:5},
-    {id:"leg-press",n:"Leg press",s:3,lo:8,hi:10,r:120,rir:"1",inc:5},
-    {id:"back-ext",n:"Back extensions (weighted)",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:2.5},
-    {id:"calf-standing",n:"Standing calf raise",s:4,lo:8,hi:12,r:90,rir:"0–1",inc:5}]},
+    {id:"smith-squat",n:"Smith machine squat",s:4,lo:5,hi:8,r:180,rir:"1–2",inc:10},
+    {id:"rdl",n:"Barbell Romanian deadlift",s:3,lo:6,hi:8,r:180,rir:"1–2",inc:10},
+    {id:"leg-press",n:"Leg press",s:3,lo:8,hi:10,r:120,rir:"1",inc:10},
+    {id:"leg-ext",n:"Seated leg extension",s:3,lo:10,hi:15,r:90,rir:"0–1",inc:5},
+    {id:"back-ext",n:"Back extensions (weighted)",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:5},
+    {id:"calf-standing",n:"Standing calf raise",s:4,lo:8,hi:12,r:90,rir:"0–1",inc:10}]},
   wed:{label:"Run",focus:"Recovery",run:true,ex:[]},
   thu:{label:"Push",focus:"Size",cool:"upper",ex:[
-    {id:"incline-smith",n:"Incline Smith machine press",s:4,lo:6,hi:8,r:180,rir:"1",inc:2.5},
+    {id:"incline-smith",n:"Incline Smith machine press",s:4,lo:6,hi:8,r:180,rir:"1",inc:5},
     {id:"cable-fly",n:"Cable fly machine",s:4,lo:8,hi:12,r:120,rir:"0–1",inc:0},
-    {id:"smith-shoulder",n:"Seated Smith machine shoulder press",s:3,lo:6,hi:10,r:120,rir:"1",inc:2.5},
+    {id:"smith-shoulder",n:"Seated Smith machine shoulder press",s:3,lo:6,hi:10,r:120,rir:"1",inc:5},
     {id:"lat-raise",n:"Lateral raises",s:4,lo:12,hi:15,r:90,rir:"0–1",inc:0},
     {id:"oh-tri",n:"Overhead cable triceps extension",s:4,lo:10,hi:12,r:90,rir:"0–1",inc:0}]},
   fri:{label:"Pull",focus:"Size",cool:"upper",ex:[
-    {id:"pulldown-close",n:"Lat pulldown (close/neutral grip)",s:4,lo:6,hi:10,r:180,rir:"1",inc:2.5},
-    {id:"row-wide",n:"Wide-grip seated cable row",s:3,lo:8,hi:10,r:120,rir:"0–1",inc:2.5},
+    {id:"pulldown-close",n:"Lat pulldown (close/neutral grip)",s:4,lo:6,hi:10,r:180,rir:"1",inc:5},
+    {id:"row-wide",n:"Wide-grip seated cable row",s:3,lo:8,hi:10,r:120,rir:"0–1",inc:5},
     {id:"row-single",n:"Single-arm cable row (each arm)",s:3,lo:10,hi:12,r:90,rir:"0–1",inc:0},
     {id:"lat-raise",n:"Lateral raises",s:3,lo:12,hi:15,r:90,rir:"0–1",inc:0},
     {id:"face-pull",n:"Face pulls",s:2,lo:12,hi:15,r:90,rir:"0–1",inc:0},
-    {id:"ez-curl",n:"EZ-bar curl",s:3,lo:8,hi:10,r:90,rir:"0–1",inc:2.5},
+    {id:"ez-curl",n:"EZ-bar curl",s:3,lo:8,hi:10,r:90,rir:"0–1",inc:5},
     {id:"hammer-rope",n:"Cable rope hammer curl",s:2,lo:10,hi:12,r:90,rir:"0–1",inc:0}]},
   sat:{label:"Legs",focus:"Size",cool:"lower",ex:[
-    {id:"leg-press",n:"Leg press",s:4,lo:6,hi:10,r:180,rir:"1",inc:5},
-    {id:"bss",n:"Bulgarian split squat (each leg)",s:3,lo:6,hi:10,r:120,rir:"1",inc:2},
-    {id:"seated-curl",n:"Seated leg curl",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:2.5},
-    {id:"leg-ext",n:"Leg extension",s:3,lo:10,hi:15,r:90,rir:"0–1",inc:2.5},
-    {id:"back-ext",n:"Back extensions",s:2,lo:10,hi:12,r:90,rir:"0–1",inc:2.5},
-    {id:"calf-standing",n:"Standing calf raise",s:4,lo:10,hi:15,r:90,rir:"0–1",inc:5}]},
+    {id:"leg-press",n:"Leg press",s:4,lo:6,hi:10,r:180,rir:"1",inc:10},
+    {id:"bss",n:"Bulgarian split squat (each leg)",s:3,lo:6,hi:10,r:120,rir:"1",inc:5},
+    {id:"seated-curl",n:"Seated leg curl",s:3,lo:8,hi:12,r:90,rir:"0–1",inc:5},
+    {id:"leg-ext",n:"Seated leg extension",s:3,lo:10,hi:15,r:90,rir:"0–1",inc:5},
+    {id:"back-ext",n:"Back extensions",s:2,lo:10,hi:12,r:90,rir:"0–1",inc:5},
+    {id:"calf-standing",n:"Standing calf raise",s:4,lo:10,hi:15,r:90,rir:"0–1",inc:10}]},
   sun:{label:"Rest",focus:"Recovery",rest:true,ex:[]}
 };
 /* swap options: [id, name, inc] — same sets and reps as the original */
 const ALTS={
-  "smith-bench":[["db-bench","Dumbbell bench press",2],["machine-chest","Machine chest press",0]],
+  "smith-bench":[["db-bench","Dumbbell bench press",5],["machine-chest","Machine chest press",0]],
   "pulldown-wide":[["machine-pulldown","Machine lat pulldown",0],["single-pulldown","Single-arm cable pulldown",0]],
-  "ohp":[["db-shoulder","Seated dumbbell shoulder press",2],["smith-shoulder","Seated Smith machine shoulder press",2.5]],
-  "cable-row":[["machine-row","Machine row",0],["db-row","Single-arm dumbbell row",2]],
-  "bb-curl":[["db-curl","Dumbbell curl",2],["cable-curl","Cable curl",0]],
-  "oh-tri":[["db-oh-tri","Dumbbell overhead triceps extension",2],["rope-pushdown","Cable rope pushdown",0]],
-  "smith-squat":[["hack-squat","Hack squat machine",5],["goblet-squat","Goblet squat",2]],
-  "rdl":[["db-rdl","Dumbbell Romanian deadlift",2],["smith-rdl","Smith machine Romanian deadlift",5]],
-  "leg-press":[["hack-squat","Hack squat machine",5],["smith-squat","Smith machine squat",5]],
-  "back-ext":[["pull-through","Cable pull-through",0],["db-rdl","Dumbbell Romanian deadlift",2]],
-  "calf-standing":[["smith-calf","Smith machine calf raise",5],["press-calf","Leg press calf raise",5]],
-  "incline-smith":[["incline-db","Incline dumbbell press",2],["machine-incline","Incline machine press",0]],
-  "cable-fly":[["pec-deck","Pec deck machine",0],["db-fly","Dumbbell fly",2]],
-  "smith-shoulder":[["db-shoulder","Seated dumbbell shoulder press",2],["machine-shoulder","Machine shoulder press",0]],
+  "ohp":[["db-shoulder","Seated dumbbell shoulder press",5],["smith-shoulder","Seated Smith machine shoulder press",5]],
+  "cable-row":[["machine-row","Machine row",0],["db-row","Single-arm dumbbell row",5]],
+  "bb-curl":[["db-curl","Dumbbell curl",5],["cable-curl","Cable curl",0]],
+  "oh-tri":[["db-oh-tri","Dumbbell overhead triceps extension",5],["rope-pushdown","Cable rope pushdown",0]],
+  "smith-squat":[["hack-squat","Hack squat machine",10],["goblet-squat","Goblet squat",5]],
+  "rdl":[["db-rdl","Dumbbell Romanian deadlift",5],["smith-rdl","Smith machine Romanian deadlift",10]],
+  "leg-press":[["hack-squat","Hack squat machine",10],["smith-squat","Smith machine squat",10]],
+  "back-ext":[["pull-through","Cable pull-through",0],["db-rdl","Dumbbell Romanian deadlift",5]],
+  "calf-standing":[["smith-calf","Smith machine calf raise",10],["press-calf","Leg press calf raise",10]],
+  "incline-smith":[["incline-db","Incline dumbbell press",5],["machine-incline","Incline machine press",0]],
+  "cable-fly":[["pec-deck","Pec deck machine",0],["db-fly","Dumbbell fly",5]],
+  "smith-shoulder":[["db-shoulder","Seated dumbbell shoulder press",5],["machine-shoulder","Machine shoulder press",0]],
   "lat-raise":[["cable-lat-raise","Cable lateral raise (each arm)",0],["machine-lat-raise","Machine lateral raise",0]],
   "pulldown-close":[["machine-pulldown","Machine lat pulldown",0],["single-pulldown","Single-arm cable pulldown",0]],
-  "row-wide":[["machine-row","Machine row",0],["db-row","Single-arm dumbbell row",2]],
-  "row-single":[["db-row","Single-arm dumbbell row",2],["machine-row","Machine row",0]],
-  "face-pull":[["reverse-pec","Reverse pec deck",0],["db-rear-raise","Bent-over dumbbell rear raise",1]],
-  "ez-curl":[["db-curl","Dumbbell curl",2],["cable-curl","Cable curl",0]],
-  "hammer-rope":[["db-hammer","Dumbbell hammer curl",2]],
-  "bss":[["walking-lunge","Walking lunges (dumbbells)",2],["reverse-lunge","Reverse lunge (dumbbells)",2]],
-  "seated-curl":[["lying-curl","Lying leg curl",2.5]],
-  "leg-ext":[["single-leg-ext","Single-leg extension",2.5]]
+  "row-wide":[["machine-row","Machine row",0],["db-row","Single-arm dumbbell row",5]],
+  "row-single":[["db-row","Single-arm dumbbell row",5],["machine-row","Machine row",0]],
+  "face-pull":[["reverse-pec","Reverse pec deck",0],["db-rear-raise","Bent-over dumbbell rear raise",2.5]],
+  "ez-curl":[["db-curl","Dumbbell curl",5],["cable-curl","Cable curl",0]],
+  "hammer-rope":[["db-hammer","Dumbbell hammer curl",5]],
+  "bss":[["walking-lunge","Walking lunges (dumbbells)",5],["reverse-lunge","Reverse lunge (dumbbells)",5]],
+  "seated-curl":[["lying-curl","Lying leg curl",5]],
+  "leg-ext":[["single-leg-ext","Single-leg extension",5]]
 };
 const EXNAME={};
 Object.values(PLAN).forEach(d=>d.ex.forEach(e=>{if(!EXNAME[e.id])EXNAME[e.id]=e.n.replace(/ \((each arm|each leg|wide grip, heavy)\)/,"")}));
@@ -342,7 +343,7 @@ const MEALS={
     ["Simple protein shake","400 ml whole milk, 1 scoop whey",380,37],
     ["Peanut banana shake","400 ml whole milk, banana, 2 tbsp peanut butter",555,22]]
 };
-const T={kcal:3100,p:130,water:2500,goal:80};
+const T={kcal:3100,p:130,water:2500,goal:175};
 const SUPPS=[["creatine","Creatine 5 g"],["vitd","Vitamin D3 (Oct–Mar)"],["whey","Whey, if short on protein"]];
 
 /* stretches: hold seconds, sides, rounds */
@@ -383,7 +384,8 @@ const restTxt=sec=>sec>=120&&sec%60===0?`${sec/60} min`:sec===150?"2–3 min":`$
 const clone=o=>JSON.parse(JSON.stringify(o));
 const num=v=>{if(v==null||v==="")return null;const n=parseFloat(String(v).replace(",","."));return isFinite(n)?n:null};
 const fmtKg=n=>(Math.round(n*100)/100).toString();
-const r25=x=>Math.max(0,Math.round(x/2.5)*2.5);
+const U="lbs";
+const r25=x=>Math.max(0,Math.round(x/5)*5);
 const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
 
 /* ---------- storage (this phone) ---------- */
@@ -397,7 +399,7 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 
 function dayDoc(d=date){return docs.get("d-"+d)||{date:d,items:[],water:0,supps:{},run:false,bw:null,stretch:false}}
 function woDoc(d=date){return docs.get("w-"+d)||null}
-const SDEF={start:null,deload:{},notes:{},swaps:{},favs:[],awake:true};
+const SDEF={unit:null,start:null,deload:{},notes:{},swaps:{},favs:[],awake:true};
 function getS(){return Object.assign({},SDEF,docs.get("settings")||{})}
 function setS(fn,delay=0){const s=clone(getS());fn(s);touch("settings",s,delay)}
 
@@ -457,15 +459,15 @@ function stalled(ex,before){
   return t[0].top;
 }
 function suggest(ex,last,wi){
-  if(wi.deload){const kg=last?topOf(last.sets).top:null;return{cls:"warn",txt:kg!=null?`Deload: ${fmtKg(kg)} kg, half the sets, stop 2–3 reps short.`:"Deload: normal weight, half the sets, stop 2–3 reps short.",kg}}
+  if(wi.deload){const kg=last?topOf(last.sets).top:null;return{cls:"warn",txt:kg!=null?`Deload: ${fmtKg(kg)} lbs, half the sets, stop 2–3 reps short.`:"Deload: normal weight, half the sets, stop 2–3 reps short.",kg}}
   if(!last)return{txt:`First time: pick a weight you can lift for ${ex.lo} reps with ${ex.rir} left in the tank.`,kg:null};
   const{top,reps}=topOf(last.sets);
   const hit=last.sets.length>=ex.s&&reps.length>=ex.s&&reps.every(r=>r>=ex.hi);
-  if(hit){if(ex.inc>0){const nk=top+ex.inc;return{cls:"up",txt:`You hit ${ex.hi} reps on every set. Add weight: ${fmtKg(nk)} kg.`,kg:nk}}
+  if(hit){if(ex.inc>0){const nk=top+ex.inc;return{cls:"up",txt:`You hit ${ex.hi} reps on every set. Add weight: ${fmtKg(nk)} lbs.`,kg:nk}}
     return{cls:"up",txt:`You hit ${ex.hi} reps on every set. Move up one step on the stack or dumbbell.`,kg:null}}
   const st=stalled(ex,date);
-  if(st!=null){const nk=r25(st*0.9);return{cls:"warn",txt:`Stuck at ${fmtKg(st)} kg for 3 sessions. Drop to ${fmtKg(nk)} kg and build back up. Check sleep and food too.`,kg:nk}}
-  return{txt:`Stay at ${fmtKg(top)} kg and beat ${reps.join(", ")} reps.`,kg:top};
+  if(st!=null){const nk=r25(st*0.9);return{cls:"warn",txt:`Stuck at ${fmtKg(st)} lbs for 3 sessions. Drop to ${fmtKg(nk)} lbs and build back up. Check sleep and food too.`,kg:nk}}
+  return{txt:`Stay at ${fmtKg(top)} lbs and beat ${reps.join(", ")} reps.`,kg:top};
 }
 function bestBefore(id,before){
   let kg=-1,reps=0,any=false;
@@ -510,6 +512,26 @@ async function updateWake(){
 }
 document.addEventListener("visibilitychange",updateWake);
 
+/* ---------- switch to pounds (one time) ---------- */
+const KG2LB=2.20462;
+function needsUnitAsk(){return getS().unit!=="lb"&&workouts().some(w=>setCount(w)>0)}
+function migrateBodyweight(){
+  if(getS().unit==="lb")return;
+  for(const[k,v]of[...docs]){if(k.startsWith("d-")&&v.bw&&v.bw<100){const d=clone(v);d.bw=Math.round(d.bw*KG2LB*10)/10;docs.set(k,d)}}
+  localSave();
+}
+function convertLifts(){
+  for(const[k,v]of[...docs]){if(!k.startsWith("w-"))continue;const w=clone(v);
+    for(const id of Object.keys(w.ex||{}))w.ex[id]=w.ex[id].map(st=>st&&st.kg!=null?Object.assign({},st,{kg:Math.round(st.kg*KG2LB*2)/2}):st);
+    docs.set(k,w)}
+  localSave();
+}
+const unitCard=()=>needsUnitAsk()?`<section class="card" style="border-color:var(--accent)">
+  <h3>Lift Log now uses pounds</h3>
+  <p class="small">You logged some workouts before this update. Which unit did you type those weights in?</p>
+  <div class="row"><button class="btn primary" data-unit="kg">They were kg, convert them</button><button class="btn" data-unit="lb">They were already lbs</button></div>
+</section>`:"";
+
 /* ---------- render ---------- */
 function safeRender(){const a=document.activeElement;if(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)&&$("#view").contains(a)){needsRender=true;return}render()}
 document.addEventListener("focusout",()=>setTimeout(()=>{if(needsRender){const a=document.activeElement;if(!(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)))render()}},0));
@@ -539,7 +561,7 @@ function goalInfo(){
   let eta=null;if(rate&&rate>0.05&&cur<T.goal){const d=new Date();d.setDate(d.getDate()+Math.round((T.goal-cur)/rate*7));eta=d.toLocaleDateString("en-GB",{month:"long",year:"numeric"})}
   return{start,cur,rate,pct,eta,left:Math.max(0,T.goal-cur)};
 }
-function goalBar(g){return `<div class="bar" style="grid-template-columns:auto 1fr auto"><span class="small num">${g.start.toFixed(1)}</span><div class="track"><div class="fill" style="width:${g.pct}%;background:var(--accent)"></div></div><span class="small num">${T.goal} kg</span></div>`}
+function goalBar(g){return `<div class="bar" style="grid-template-columns:auto 1fr auto"><span class="small num">${g.start.toFixed(1)}</span><div class="track"><div class="fill" style="width:${g.pct}%;background:var(--accent)"></div></div><span class="small num">${T.goal} lbs</span></div>`}
 
 function vToday(){
   const k=dayKey(date),P=PLAN[k],dd=dayDoc(),w=woDoc(),wi=weekInfo();
@@ -552,7 +574,7 @@ function vToday(){
     <button class="btn primary" data-go="train">${logged?"Continue workout":"Start workout"}</button>`;
   const lb=lastBackup(),nag=docs.size>=5&&(!lb||lb<addDays(today(),-14));
   const g=goalInfo(),wa=weekAvgs();
-  return `${nag?`<div class="hint up" style="display:flex;align-items:center;gap:10px"><span style="flex:1">It's been a while since your last backup.</span><button class="btn sm primary" data-backup="export">Back up now</button></div>`:""}
+  return `${unitCard()}${nag?`<div class="hint up" style="display:flex;align-items:center;gap:10px"><span style="flex:1">It's been a while since your last backup.</span><button class="btn sm primary" data-backup="export">Back up now</button></div>`:""}
   <section class="card">
     <div class="spread"><span class="eyebrow">${DAYNAME[k]} session</span><span class="tag ${wi.deload?"warn":""}">${weekLabel(wi)}</span></div>
     <div class="row" style="align-items:flex-end"><div class="session-name">${P.label}</div><span class="tag">${P.focus}</span></div>
@@ -572,12 +594,12 @@ function vToday(){
     <div>${SUPPS.map(([id,l])=>`<label class="check"><input type="checkbox" data-supp="${id}" ${dd.supps&&dd.supps[id]?"checked":""}><span>${l}</span></label>`).join("")}</div>
   </section>
   <section class="card">
-    <div class="spread"><h3>Bodyweight</h3>${wa.cur?`<span class="small muted num">7-day avg ${wa.cur.toFixed(1)} kg</span>`:""}</div>
+    <div class="spread"><h3>Bodyweight</h3>${wa.cur?`<span class="small muted num">7-day avg ${wa.cur.toFixed(1)} lbs</span>`:""}</div>
     <form class="row" id="bwform">
-      <input id="bw" inputmode="decimal" placeholder="kg, morning, before eating" value="${dd.bw??""}" style="flex:1" aria-label="Bodyweight in kg">
+      <input id="bw" inputmode="decimal" placeholder="lbs, morning, before eating" value="${dd.bw??""}" style="flex:1" aria-label="Bodyweight in lbs">
       <button class="btn primary" type="submit">${dd.bw?"Update":"Save"}</button>
     </form>
-    ${g?goalBar(g)+`<div class="small muted num">${g.left.toFixed(1)} kg to go${g.eta?` · on pace for ${g.eta}`:""}</div>`:""}
+    ${g?goalBar(g)+`<div class="small muted num">${g.left.toFixed(1)} lbs to go${g.eta?` · on pace for ${g.eta}`:""}</div>`:""}
   </section>`;
 }
 
@@ -590,16 +612,16 @@ function exCard(ex0,i,count,k,w,wi){
   const s=getS();const note=s.notes[ex.id]||"";
   const rows=Array.from({length:sets},(_,j)=>{
     const st=cur[j]||{};const done=st.kg!=null&&st.r;const pr=done&&isPR(st,best,cur.slice(0,j));
-    const phKg=sg.kg!=null?fmtKg(sg.kg):"kg";const phR=last&&last.sets[j]?last.sets[j].r:`${ex.lo}–${ex.hi}`;
+    const phKg=sg.kg!=null?fmtKg(sg.kg):"lbs";const phR=last&&last.sets[j]?last.sets[j].r:`${ex.lo}–${ex.hi}`;
     return `<div class="set ${done?"done":""}">
       <span class="lbl">${done?"✓":j+1}${pr?'<span class="tag pr">PR</span>':""}</span>
-      <input inputmode="decimal" data-ex="${ex.id}" data-i="${j}" data-f="kg" placeholder="${phKg}" value="${st.kg??""}" aria-label="Set ${j+1} weight in kg">
+      <input inputmode="decimal" data-ex="${ex.id}" data-i="${j}" data-f="kg" placeholder="${phKg}" value="${st.kg??""}" aria-label="Set ${j+1} weight in lbs">
       <input inputmode="numeric" data-ex="${ex.id}" data-i="${j}" data-f="r" placeholder="${phR}" value="${st.r??""}" aria-label="Set ${j+1} reps">
       <button class="btn sm" data-rest="${ex.r}">Rest ${mmss(ex.r)}</button></div>`}).join("");
   let warm="";
   if(i===0){
     const work=num(cur[0]&&cur[0].kg)??sg.kg??(last?topOf(last.sets).top:null);
-    warm=`<details class="plain" ${work?"open":""}><summary class="small">Warm-up sets</summary><div style="margin-top:8px">${work?`<div class="warm"><b>10 reps</b><span>${fmtKg(r25(work*.5))} kg</span><b>5 reps</b><span>${fmtKg(r25(work*.7))} kg</span><b>2–3 reps</b><span>${fmtKg(r25(work*.85))} kg</span></div><div class="small muted" style="margin-top:6px">Based on ${fmtKg(work)} kg. Rest about 1 min between them.</div>`:`<div class="small muted">Enter your set 1 weight and the warm-up weights appear here: 10 reps at 50%, 5 at 70%, 2–3 at 85%.</div>`}</div></details>`;
+    warm=`<details class="plain" ${work?"open":""}><summary class="small">Warm-up sets</summary><div style="margin-top:8px">${work?`<div class="warm"><b>10 reps</b><span>${fmtKg(r25(work*.5))} lbs</span><b>5 reps</b><span>${fmtKg(r25(work*.7))} lbs</span><b>2–3 reps</b><span>${fmtKg(r25(work*.85))} lbs</span></div><div class="small muted" style="margin-top:6px">Based on ${fmtKg(work)} lbs. Rest about 1 min between them.</div>`:`<div class="small muted">Enter your set 1 weight and the warm-up weights appear here: 10 reps at 50%, 5 at 70%, 2–3 at 85%.</div>`}</div></details>`;
   } else warm=`<div class="small muted">Warm-up: 1 lighter set of 6–8 reps.</div>`;
   const alts=ALTS[ex0.id]||[];
   const swapUI=openSwap===ex0.id?`<select data-swap="${ex0.id}" aria-label="Choose exercise"><option value="">${esc(ex0.n)} (plan)</option>${alts.map(a=>`<option value="${a[0]}" ${s.swaps[ex0.id]===a[0]?"selected":""}>${esc(a[1])}</option>`).join("")}</select>`:"";
@@ -608,7 +630,7 @@ function exCard(ex0,i,count,k,w,wi){
     ${last?`<div class="small muted num">Last time (${short(last.date)}): ${last.sets.map(x=>`${fmtKg(x.kg)}×${x.r}`).join(", ")}</div>`:""}
     <div class="hint ${sg.cls||""}">${esc(sg.txt)}</div>
     ${warm}
-    <div class="sethead"><span>Set</span><span>kg</span><span>Reps</span><span></span></div>
+    <div class="sethead"><span>Set</span><span>lbs</span><span>Reps</span><span></span></div>
     <div class="sets">${rows}</div>
     ${note&&openSwap!=="note:"+ex.id?`<div class="small"><span class="muted">Note:</span> ${esc(note)}</div>`:""}
     <div class="ex-tools">${alts.length?`<button class="btn sm ghost" data-swapopen="${ex0.id}">${openSwap===ex0.id?"Close":"Swap exercise"}</button>`:""}<button class="btn sm ghost" data-noteopen="${ex.id}">${openSwap==="note:"+ex.id?"Done":note?"Edit note":"Add note"}</button></div>
@@ -630,7 +652,7 @@ function vTrain(){
     const R=ROUTINES[P.cool];
     body+=`<section class="card"><h3>Finished?</h3><p class="small muted">${R.n}: ${R.items.length} stretches, about 4 minutes.</p><button class="btn primary" data-startroutine="${P.cool}">Start cool-down stretches</button></section>`;
   }
-  return `<div class="chips" role="group" aria-label="Session">${chips}</div>
+  return `${unitCard()}<div class="chips" role="group" aria-label="Session">${chips}</div>
     <div class="spread"><h2>${P.label} <span class="muted" style="font-size:18px">· ${P.focus}</span></h2><span class="tag ${wi.deload?"warn":""}">${weekLabel(wi)}</span></div>
     ${wi.deload&&!P.run&&!P.rest?`<div class="hint warn">Deload week: same weights as last week, half the sets, stop 2–3 reps short. You come back stronger next week.</div>`:""}
     ${"wakeLock" in navigator&&!P.run&&!P.rest?`<label class="check" style="padding:0"><input type="checkbox" id="awake" ${awake?"checked":""}><span class="small">Keep screen on during workouts</span></label>`:""}
@@ -804,9 +826,9 @@ function vProgress(){
   const s=bwSeries(),g=goalInfo();
   const roll=s.map(p=>{const from=addDays(p.date,-6);const win=s.filter(q=>q.date>=from&&q.date<=p.date);return{date:p.date,y:+avg(win.map(q=>q.kg)).toFixed(2)}});
   let advice="Log your weight 3–4 mornings a week. After two weeks you'll see your weekly rate here.",rate=g?g.rate:null;
-  if(rate!=null)advice=rate<0.25?"Gaining less than 0.25 kg a week. Add 200 kcal a day (300 ml whole milk, or a banana and 1 tbsp peanut butter).":
-    rate>0.5?"Gaining more than 0.5 kg a week, which is mostly fat. Cut 200 kcal a day.":"On track: 0.25–0.5 kg a week. Keep calories where they are.";
-  const bwBlock=s.length>=2?chartSvg(s.map(p=>({date:p.date,y:p.kg})),{line:roll,goal:T.goal,showGoal:g&&T.goal-g.cur<4,label:"Bodyweight over time with 7-day average"}):`<div class="empty">Your bodyweight chart appears after two weigh-ins. Log them on the Today tab.</div>`;
+  if(rate!=null)advice=rate<0.5?"Gaining less than 0.5 lbs a week. Add 200 kcal a day (300 ml whole milk, or a banana and 1 tbsp peanut butter).":
+    rate>1.1?"Gaining more than 1 lb a week, which is mostly fat. Cut 200 kcal a day.":"On track: 0.5–1 lb a week. Keep calories where they are.";
+  const bwBlock=s.length>=2?chartSvg(s.map(p=>({date:p.date,y:p.kg})),{line:roll,goal:T.goal,showGoal:g&&T.goal-g.cur<8,label:"Bodyweight over time with 7-day average"}):`<div class="empty">Your bodyweight chart appears after two weigh-ins. Log them on the Today tab.</div>`;
   const ws=workouts();
   const ids=[...new Set(ws.flatMap(w=>Object.keys(w.ex||{}).filter(id=>setsOf(w,id).length)))];
   if(!liftSel||!ids.includes(liftSel))liftSel=ids[0]||null;
@@ -815,22 +837,22 @@ function vProgress(){
     const hist=ws.filter(w=>setsOf(w,liftSel).length).map(w=>{const t=topOf(setsOf(w,liftSel));return{date:w.date,y:t.top,reps:t.reps,del:w.deload}}).reverse();
     const best=hist.reduce((b,h)=>!b||h.y>b.y||(h.y===b.y&&Math.max(...h.reps)>Math.max(...b.reps))?h:b,null);
     liftBlock=`<select id="liftsel" aria-label="Exercise">${ids.map(id=>`<option value="${id}" ${id===liftSel?"selected":""}>${esc(EXNAME[id]||id)}</option>`).join("")}</select>
-    ${best?`<div class="small num">Best: <b>${fmtKg(best.y)} kg × ${Math.max(...best.reps)}</b> <span class="muted">(${short(best.date)})</span></div>`:""}
+    ${best?`<div class="small num">Best: <b>${fmtKg(best.y)} lbs × ${Math.max(...best.reps)}</b> <span class="muted">(${short(best.date)})</span></div>`:""}
     ${hist.length>=2?chartSvg(hist,{label:"Top set weight per session"}):""}
     <div class="tablewrap"><table class="num"><thead><tr><th>Date</th><th>Top set</th><th>Reps at top weight</th></tr></thead><tbody>
-    ${hist.slice().reverse().slice(0,8).map(h=>`<tr><td>${short(h.date)}${h.del?' <span class="muted">(deload)</span>':""}</td><td>${fmtKg(h.y)} kg</td><td>${h.reps.join(", ")}</td></tr>`).join("")}</tbody></table></div>`;
+    ${hist.slice().reverse().slice(0,8).map(h=>`<tr><td>${short(h.date)}${h.del?' <span class="muted">(deload)</span>':""}</td><td>${fmtKg(h.y)} lbs</td><td>${h.reps.join(", ")}</td></tr>`).join("")}</tbody></table></div>`;
   }
   return `
   <section class="card">
     <h3>Bodyweight goal</h3>
     <div class="stats">
-      <div class="stat"><b>${g?g.cur.toFixed(1):"—"}</b><span>kg now (7-day avg)</span></div>
-      <div class="stat"><b>${rate!=null?(rate>=0?"+":"")+rate.toFixed(2):"—"}</b><span>kg this week</span></div>
-      <div class="stat"><b>${g?g.left.toFixed(1):"—"}</b><span>kg to ${T.goal} kg</span></div>
+      <div class="stat"><b>${g?g.cur.toFixed(1):"—"}</b><span>lbs now (7-day avg)</span></div>
+      <div class="stat"><b>${rate!=null?(rate>=0?"+":"")+rate.toFixed(2):"—"}</b><span>lbs this week</span></div>
+      <div class="stat"><b>${g?g.left.toFixed(1):"—"}</b><span>lbs to ${T.goal}</span></div>
     </div>
-    ${g?goalBar(g)+`<div class="small muted">${g.eta?`At this pace you reach ${T.goal} kg around <b style="color:var(--fg)">${g.eta}</b>.`:"Your finish date appears once you're gaining steadily."}</div>`:""}
+    ${g?goalBar(g)+`<div class="small muted">${g.eta?`At this pace you reach ${T.goal} lbs around <b style="color:var(--fg)">${g.eta}</b>.`:"Your finish date appears once you're gaining steadily."}</div>`:""}
     ${bwBlock}
-    <div class="hint ${rate!=null&&rate>=0.25&&rate<=0.5?"":"up"}">${advice}</div>
+    <div class="hint ${rate!=null&&rate>=0.5&&rate<=1.1?"":"up"}">${advice}</div>
   </section>
   ${calendar()}
   <section class="card"><h3>Lifts</h3>${liftBlock}</section>`;
@@ -858,7 +880,7 @@ function vPlan(){
       <tr><td>Protein</td><td><b>120–140 g</b> (4–5 meals, 25–40 g each)</td></tr>
       <tr><td>Carbs / fat</td><td>400–450 g / 80–100 g</td></tr>
       <tr><td>Water</td><td>2.25–2.5 L, plus ~0.5 L per hour of training</td></tr>
-      <tr><td>Gain rate</td><td>0.25–0.5 kg a week (weekly average)</td></tr>
+      <tr><td>Gain rate</td><td>0.5–1 lb a week (weekly average)</td></tr>
       <tr><td>Sleep</td><td>8–9 hours, same times every day</td></tr>
     </table></div>
   </section>
@@ -866,7 +888,7 @@ function vPlan(){
     <details open><summary>How to add weight</summary>
       <ul class="clean small" style="margin-top:8px">
         <li>Start at the bottom of the rep range. Add reps each session.</li>
-        <li>When every set hits the top of the range, add weight next time: 2.5 kg upper body, 5 kg legs, one step on cables. The Train tab tells you when.</li>
+        <li>When every set hits the top of the range, add weight next time: 5 lbs upper body, 10 lbs legs, one step on cables. The Train tab tells you when.</li>
         <li>Heavy strength lifts: stop with 1–2 reps left. Everything else: 0–1 left.</li>
         <li>Stuck for 3 sessions: drop 10% and build back up. The Train tab spots this for you.</li>
       </ul></details>
@@ -914,6 +936,7 @@ V.addEventListener("click",e=>{
     if(D.p==="pause"){if(player.paused){player.paused=false;player.end=Date.now()+player.left*1000}else{player.paused=true;player.left=Math.max(0,(player.end-Date.now())/1000)}render()}
     else if(D.p==="skip"){if(player.i>=player.steps.length-1){finishRoutine();return}player.i++;player.phase="hold";player.paused=false;player.end=Date.now()+player.steps[player.i].sec*1000;render()}
     else stopRoutine();return}
+  if(D.unit){if(D.unit==="kg")convertLifts();setS(s=>{s.unit="lb"});render();toast(D.unit==="kg"?"Converted your earlier lifts to pounds":"Got it, nothing changed");return}
   if(D.gotodate){date=D.gotodate;view="today";trainKey=null;render();window.scrollTo(0,0);return}
   if(D.cal){const[y,m]=calMonth.split("-").map(Number);const d=new Date(y,m-1+Number(D.cal),1);calMonth=`${d.getFullYear()}-${pad(d.getMonth()+1)}`;render();return}
   if(D.deload){const mon=mondayOf(today());setS(s=>{s.deload=Object.assign({},s.deload);if(D.deload==="auto")delete s.deload[mon];else s.deload[mon]=D.deload==="1"});render();return}
@@ -953,11 +976,11 @@ function checkPR(t){
   if(pr&&!tag)lbl.insertAdjacentHTML("beforeend",'<span class="tag pr">PR</span>');
   if(!pr&&tag)tag.remove();
   const key=`${date}|${id}|${i}|${s.kg}|${s.r}`;
-  if(pr&&!prShown.has(key)){prShown.add(key);toast(`New personal record: ${fmtKg(s.kg)} kg × ${s.r} on ${EXNAME[id]||"this lift"}`);beep(3)}
+  if(pr&&!prShown.has(key)){prShown.add(key);toast(`New personal record: ${fmtKg(s.kg)} lbs × ${s.r} on ${EXNAME[id]||"this lift"}`);beep(3)}
 }
 V.addEventListener("submit",e=>{
   e.preventDefault();
-  if(e.target.id==="bwform"){const v=num($("#bw").value);if(v==null||v<30||v>250){toast("Enter your weight in kg, like 64.2");return}
+  if(e.target.id==="bwform"){const v=num($("#bw").value);if(v==null||v<70||v>550){toast("Enter your weight in pounds, like 142.4");return}
     const dd=clone(dayDoc());dd.bw=Math.round(v*10)/10;touch("d-"+date,dd);$("#bw").blur();render();toast("Weight saved")}
   if(e.target.id==="custom"){const n=$("#cn").value.trim(),k=num($("#ck").value),p=num($("#cp").value)??0;
     if(!n||k==null){toast("Add a name and the calories");return}
@@ -977,7 +1000,7 @@ $("#timer-add").addEventListener("click",()=>{if(!tInt){startTimer(30);return}tE
 $("#timer-stop").addEventListener("click",()=>{clearInterval(tInt);tInt=null;$("#timer").hidden=true});
 
 /* ---------- boot ---------- */
-localLoad();render();
+localLoad();migrateBodyweight();if(!needsUnitAsk()&&getS().unit!=="lb")setS(s=>{s.unit="lb"});render();
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
 </script>
