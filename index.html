@@ -118,6 +118,10 @@ input::placeholder,textarea::placeholder{color:var(--muted);opacity:.75}
 .set.done .lbl{color:var(--ok)}
 .sethead{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) auto;gap:6px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .sethead span{text-align:center}
+ol.whoop{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+ol.whoop li b{font-weight:600}
+.sets-line{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13.5px;margin-top:2px}
+.sets-line em{font-style:normal;color:var(--muted);font-size:12px;margin-right:3px}
 .warm{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px;font-variant-numeric:tabular-nums}
 .ex-tools{display:flex;gap:6px;flex-wrap:wrap}
 
@@ -422,7 +426,7 @@ function importBackup(f){
 }
 
 /* ---------- UI state ---------- */
-let view="today",date=today(),trainKey=null,foodCat="Breakfast",liftSel=null,calMonth=today().slice(0,7),openSwap=null,needsRender=false;
+let whoopOpen=false,view="today",date=today(),trainKey=null,foodCat="Breakfast",liftSel=null,calMonth=today().slice(0,7),openSwap=null,needsRender=false;
 const prShown=new Set();
 let toastT;
 function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3200)}
@@ -650,7 +654,11 @@ function vTrain(){
   else{
     body=P.ex.map((e,i)=>exCard(e,i,P.ex.length,k,w,wi)).join("");
     const R=ROUTINES[P.cool];
-    body+=`<section class="card"><h3>Finished?</h3><p class="small muted">${R.n}: ${R.items.length} stretches, about 4 minutes.</p><button class="btn primary" data-startroutine="${P.cool}">Start cool-down stretches</button></section>`;
+    body+=`<section class="card"><h3>Finished?</h3>
+      <div class="row"><button class="btn primary" data-whoop="1">${whoopOpen?"Hide":"Show"} WHOOP summary</button><button class="btn" data-startroutine="${P.cool}">Cool-down stretches</button></div>
+      <p class="small muted">Cool-down: ${R.n}, ${R.items.length} stretches, about 4 minutes.</p>
+      ${whoopOpen?`<div id="whoop-sum">${whoopHTML(k,w)}</div>`:""}
+    </section>`;
   }
   return `${unitCard()}<div class="chips" role="group" aria-label="Session">${chips}</div>
     <div class="spread"><h2>${P.label} <span class="muted" style="font-size:18px">· ${P.focus}</span></h2><span class="tag ${wi.deload?"warn":""}">${weekLabel(wi)}</span></div>
@@ -696,6 +704,33 @@ function vFood(){
       </form></details>
     <div class="small muted">Plan weights for oats, rice, pasta and meat are uncooked. Numbers are approximate; let the scale decide.</div>
   </section>`;
+}
+
+/* ---------- WHOOP summary ---------- */
+function whoopRows(k,w){
+  const rows=[],seen=new Set();if(!w)return rows;
+  const add=(id,n)=>{if(seen.has(id))return;seen.add(id);const ss=((w.ex&&w.ex[id])||[]).filter(s=>s&&s.kg!=null&&s.r);if(ss.length)rows.push({n,ss})};
+  PLAN[k].ex.forEach(e0=>{const ex=resolveEx(e0);add(ex.id,ex.n)});
+  Object.keys(w.ex||{}).forEach(id=>add(id,EXNAME[id]||id));
+  return rows;
+}
+function whoopText(k,w){
+  const rows=whoopRows(k,w);
+  return `${PLAN[k].label} · ${parse(date).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}\n`+rows.map((r,i)=>`${i+1}. ${r.n}\n   ${r.ss.map(s=>`${fmtKg(s.kg)} lbs × ${s.r}`).join(", ")}`).join("\n");
+}
+function whoopHTML(k,w){
+  const rows=whoopRows(k,w);
+  if(!rows.length)return `<div class="empty">Log some sets above and they'll appear here, ready to copy into WHOOP.</div>`;
+  const n=rows.reduce((a,r)=>a+r.ss.length,0);
+  return `<div class="spread" style="margin-top:4px"><span class="eyebrow">For WHOOP Strength Trainer</span><span class="small muted num">${rows.length} exercises · ${n} sets</span></div>
+  <ol class="whoop">${rows.map(r=>`<li><b>${esc(r.n)}</b><div class="sets-line num">${r.ss.map((s,j)=>`<span><em>Set ${j+1}</em> ${fmtKg(s.kg)} lbs × ${s.r}</span>`).join("")}</div></li>`).join("")}</ol>
+  <button class="btn" data-whoopcopy="1">Copy as text</button>
+  <p class="small muted">Open your matching routine in WHOOP's Strength Trainer and enter each set top to bottom. If WHOOP names an exercise differently, pick the closest match.</p>`;
+}
+function refreshWhoop(){const el=document.getElementById("whoop-sum");if(!el)return;const w=woDoc();const k=trainKey||(w&&w.session)||dayKey(date);el.innerHTML=whoopHTML(k,w)}
+function copyText(t){
+  const fallback=()=>{const ta=document.createElement("textarea");ta.value=t;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,t.length);let ok=false;try{ok=document.execCommand("copy")}catch(e){}ta.remove();toast(ok?"Copied":"Couldn't copy. Press and hold the list to select it instead.")};
+  try{navigator.clipboard.writeText(t).then(()=>toast("Copied"),fallback)}catch(e){fallback()}
 }
 
 /* ---------- stretch player ---------- */
@@ -921,7 +956,7 @@ V.addEventListener("click",e=>{
   const t=e.target.closest("button");if(!t)return;const D=t.dataset;
   if(D.go){view=D.go;render();window.scrollTo(0,0);return}
   if(D.water){const dd=clone(dayDoc());dd.water=Math.max(0,(dd.water||0)+Number(D.water));touch("d-"+date,dd);render();return}
-  if(D.session){trainKey=D.session;openSwap=null;render();return}
+  if(D.session){trainKey=D.session;openSwap=null;whoopOpen=false;render();return}
   if(D.cat){foodCat=D.cat;render();return}
   if(D.add){const f=LIB[+D.add];const dd=clone(dayDoc());dd.items.push({n:f.n,k:f.k,p:f.p});touch("d-"+date,dd);render();toast(`Added ${f.n}`);return}
   if(D.favlib){toggleFav(LIB[+D.favlib]);render();return}
@@ -932,6 +967,8 @@ V.addEventListener("click",e=>{
   if(D.backup){exportBackup();return}
   if(D.swapopen){openSwap=openSwap===D.swapopen?null:D.swapopen;render();return}
   if(D.noteopen){openSwap=openSwap==="note:"+D.noteopen?null:"note:"+D.noteopen;render();if(openSwap){const ta=V.querySelector(`textarea[data-note="${D.noteopen}"]`);ta&&ta.focus()}return}
+  if(D.whoop){whoopOpen=!whoopOpen;render();if(whoopOpen){const el=document.getElementById("whoop-sum");el&&el.scrollIntoView&&el.scrollIntoView({behavior:"smooth",block:"start"})}return}
+  if(D.whoopcopy){const w=woDoc();const k=trainKey||(w&&w.session)||dayKey(date);copyText(whoopText(k,w));return}
   if(D.startroutine){startRoutine(D.startroutine);return}
   if(D.p){if(!player)return;
     if(D.p==="pause"){if(player.paused){player.paused=false;player.end=Date.now()+player.left*1000}else{player.paused=true;player.left=Math.max(0,(player.end-Date.now())/1000)}render()}
@@ -964,7 +1001,7 @@ V.addEventListener("input",e=>{
   const arr=w.ex[t.dataset.ex]=w.ex[t.dataset.ex]||[];
   const i=+t.dataset.i;for(let j=0;j<=i;j++)arr[j]=arr[j]||{kg:null,r:null};
   const v=num(t.value);arr[i][t.dataset.f]=t.dataset.f==="r"?(v!=null?Math.round(v):null):v;
-  touch("w-"+date,w,500);
+  touch("w-"+date,w,500);refreshWhoop();
   const row=t.closest(".set"),s=arr[i],done=s.kg!=null&&s.r;row.classList.toggle("done",!!done);
   const lbl=row.querySelector(".lbl");const pr=lbl.querySelector(".pr");lbl.firstChild.textContent=done?"✓":i+1;
   if(!done&&pr)pr.remove();

@@ -1,6 +1,6 @@
 // Lift Log service worker: keeps the app working offline.
 // Bump VERSION whenever you upload a new index.html so phones pick up the update.
-const VERSION = "liftlog-v4";
+const VERSION = "liftlog-v5";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest",
   "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 
